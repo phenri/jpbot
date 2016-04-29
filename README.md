@@ -26,9 +26,9 @@ keep in touch with our games and latest news on twitter
 https://twitter.com/IamViolenceDev
 
 
-If you like to PURCHASE a version of the script without ads or that
+If you like to PURCHASE a version of the script without ads that
 goes fully undetectable mail me  jonaspetersoncasey@gmx.com
-also if you want the deobfuscated source code 
+
 
 also my  reddit handle
 https://www.reddit.com/r/chessCheat/
@@ -37,3 +37,5 @@ https://www.reddit.com/user/1eEGQMm
 Winning against GMs
 https://youtu.be/XBlWnMFywko
 https://www.youtube.com/watch?v=_GbWsoSkddk
+
+cheers

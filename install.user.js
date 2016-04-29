@@ -2,7 +2,7 @@
 // @name        lichess
 // @namespace   lichess
 // @include     *.lichess.org/*
-// @version     1
+// @version     2
 // @require         http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js
 // @require https://raw.githubusercontent.com/nmrugg/stockfish.js/master/src/stockfish.js
 // @updateURL https://raw.githubusercontent.com/jonaspeterson/lichess-cheat-bot/master/script.js

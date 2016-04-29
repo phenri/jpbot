@@ -5,67 +5,88 @@
 // @version     1
 // @require         http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js
 // @require https://raw.githubusercontent.com/nmrugg/stockfish.js/master/src/stockfish.js
-// @updateURL https://raw.githubusercontent.com/jonaspeterson/lichess-cheat-bot/master/script.js
 // @grant    GM_xmlhttpRequest
 // @grant GM_setValue
 // @grant GM_getValue
 // @grant GM_openInTab 
 // @run-at document-end
 // ==/UserScript==
-var _0xc898 = ["uci", "postMessage", "go depth 10", "lastTime", "getTime", "abs", "http://gamejolt.com/games/maniac/129366", "https://www.youtube.com/watch?v=XBlWnMFywko", "https://www.youtube.com/watch?v=JfWCZSMPAnU", "empty", "<a data-icon=\"r\" target=\"_self\" href=\"/@/sparklehorse\" class=\"text user_link online is-green\">sparklehorse (2403)</a><span class=\"status hint--top\" data-hint=\"Player has left the game\"><span data-icon=\"0\"></span></span>", "append", "each", ".username*", "", "class", "attr", "piece", "children", "square", "white", "indexOf", "black", "border", "3px solid black", "css", "border-color", "#ff0000", "0px solid black", "reverse", "get", "onmessage", "bestmove", " ", "split", "YM628LRIVF", "orientation-black", "hasClass", ".cg-board", "moves", "clone", "remove", "push", "length", "p", ".last-move*", "h", "g", "f", "e", "d", "c", "b", "a", "unbind", "delete", "last-move oc", "floor", "h1e1", "e1g1", "h8e8", "e8g8", "e8a8", "e8c8", "e1a1", "e1c1", "position startpos moves ", "go movetime 100", "match", ".last-move.oc, .last-move.occupied", ".oc, .occupied", "not", ".last-move", "click", "trigger", "ready"];
+var _0x339c = ["uci", "postMessage", "go depth 10", "https://www.youtube.com/watch?v=oAR4sj4CTQQ", "http://gamejolt.com/games/maniac/129366", "https://www.youtube.com/watch?v=r1wRvGe6IYY", "https://www.youtube.com/watch?v=uYMTnyS5-yI", "https://www.youtube.com/watch?v=1mw__v9nPyc", "https://www.youtube.com/watch?v=wgacH14KepM", "https://www.youtube.com/watch?v=fGfyrOnBmbI", "https://www.youtube.com/watch?v=XBlWnMFywko", "http://gamejolt.com/games/animal-hell/133451", "https://www.youtube.com/watch?v=_GbWsoSkddk", "https://www.youtube.com/watch?v=xCZXyzw-2XA", "https://www.youtube.com/watch?v=z2A9p0SULdU", "https://www.youtube.com/watch?v=In1qKbXFtoo", "https://www.youtube.com/watch?v=B2mWagQyEZg", "https://www.youtube.com/watch?v=NJhTVguSL7k", "http://gamejolt.com/games/i-am-violence/129022", "length", "lastTime", "currentLink", "getTime", "abs", "each", ".username*", "", "class", "attr", "piece", "children", "square", "white", "indexOf", "black", "border", "3px solid black", "css", "border-color", "#ff0000", "0px solid black", "reverse", "get", "onmessage", "bestmove", " ", "split", "YM628LRIVF", "orientation-black", "hasClass", ".cg-board", "moves", "clone", "remove", "push", "p", ".last-move*", "h", "g", "f", "e", "d", "c", "b", "a", "unbind", "delete", "last-move oc", "floor", "h1e1", "e1g1", "h8e8", "e8g8", "e8a8", "e8c8", "e1a1", "e1c1", "position startpos moves ", "go movetime 100", "match", ".last-move.oc, .last-move.occupied", ".oc, .occupied", "not", ".last-move", "click", "trigger", "title", "ready"];
 var stockfish = STOCKFISH();
-stockfish[_0xc898[1]](_0xc898[0]);
-stockfish[_0xc898[1]](_0xc898[2]);
+stockfish[_0x339c[1]](_0x339c[0]);
+stockfish[_0x339c[1]](_0x339c[2]);
 var debug = 1;
-var lTime = GM_getValue(_0xc898[3]);
+var links = [_0x339c[3], _0x339c[4], _0x339c[5], _0x339c[6], _0x339c[7], _0x339c[8], _0x339c[9], _0x339c[10], _0x339c[11], _0x339c[12], _0x339c[13], _0x339c[14], _0x339c[15], _0x339c[16], _0x339c[17], _0x339c[18]];
+var linksLength = links[_0x339c[19]];
+var lTime = GM_getValue(_0x339c[20]);
 if(lTime) {} else {
     lTime = 1
 };
+var currentLink = GM_getValue(_0x339c[21]);
+if(currentLink) {} else {
+    currentLink = 0
+};
 var d = new Date();
-var n = d[_0xc898[4]]();
-var diff = Math[_0xc898[5]](parseInt(n) - parseInt(lTime));
-var longD = 60000 * 12;
+var n = d[_0x339c[22]]();
+var diff = Math[_0x339c[23]](parseInt(n) - parseInt(lTime));
+var longD = 60000 * 8;
 if(diff > longD) {
-    GM_openInTab(_0xc898[6]);
-    GM_openInTab(_0xc898[7]);
-    GM_openInTab(_0xc898[8]);
-    GM_setValue(_0xc898[3], n)
+    for(i = currentLink; i < (currentLink + 3); i++) {
+        if(i < linksLength) {
+            GM_openInTab(links[i])
+        }
+    };
+    GM_setValue(_0x339c[20], n);
+    currentLink += 2;
+    if(currentLink >= linksLength) {
+        currentLink = 0
+    };
+    GM_setValue(_0x339c[21], currentLink)
 };
 setInterval(function a() {
-    var lTime = GM_getValue(_0xc898[3]);
+    var lTime = GM_getValue(_0x339c[20]);
     if(lTime) {} else {
         lTime = 1
     };
-    var d = new Date();
-    var n = d[_0xc898[4]]();
-    var diff = Math[_0xc898[5]](parseInt(n) - parseInt(lTime));
-    var longD = 60000 * 12;
-    if(diff > longD) {
-        GM_openInTab(_0xc898[6]);
-        GM_openInTab(_0xc898[7]);
-        GM_openInTab(_0xc898[8]);
-        GM_setValue(_0xc898[3], n)
-    }
-}, 1000);
-$(document)[_0xc898[75]](function a() {
-    _0xa0f0x12 = 0;
-    $(_0xc898[13])[_0xc898[12]](function a() {
-        if(_0xa0f0x12 == 0 || _0xa0f0x12 == 1) {
-            $(this)[_0xc898[9]]();
-            $(this)[_0xc898[11]](_0xc898[10])
-        } else {};
-        _0xa0f0x12++
-    });
-    var _0xa0f0x9 = _0xc898[14];
-    var _0xa0f0xa = $(_0xc898[19])[_0xc898[18]](_0xc898[17])[_0xc898[16]](_0xc898[15]);
-    if(_0xa0f0xa.toString()[_0xc898[21]](_0xc898[20]) > -1) {
-        _0xa0f0x9 = _0xc898[22]
-    } else {
-        _0xa0f0x9 = _0xc898[20]
+    var currentLink = GM_getValue(_0x339c[21]);
+    if(currentLink) {} else {
+        currentLink = 0
     };
-    if(_0xa0f0x9 == _0xc898[20]) {
-        function _0xa0f0xb(_0xa0f0xc) {
-            var _0xa0f0xd = {
+    var d = new Date();
+    var n = d[_0x339c[22]]();
+    var diff = Math[_0x339c[23]](parseInt(n) - parseInt(lTime));
+    var longD = 60000 * 8;
+    if(diff > longD) {
+        for(i = currentLink; i < (currentLink + 3); i++) {
+            if(i < linksLength) {
+                GM_openInTab(links[i])
+            }
+        };
+        GM_setValue(_0x339c[20], n);
+        currentLink += 2;
+        if(currentLink >= linksLength) {
+            currentLink = 0
+        };
+        GM_setValue(_0x339c[21], currentLink)
+    };
+    d
+}, 1000);
+$(document)[_0x339c[87]](function a() {
+    _0x758bx15 = 0;
+    $(_0x339c[25])[_0x339c[24]](function a() {
+        if(_0x758bx15 == 0 || _0x758bx15 == 1) {} else {};
+        _0x758bx15++
+    });
+    var _0x758bxc = _0x339c[26];
+    var _0x758bxd = $(_0x339c[31])[_0x339c[30]](_0x339c[29])[_0x339c[28]](_0x339c[27]);
+    if(_0x758bxd.toString()[_0x339c[33]](_0x339c[32]) > -1) {
+        _0x758bxc = _0x339c[34]
+    } else {
+        _0x758bxc = _0x339c[32]
+    };
+    if(_0x758bxc == _0x339c[32]) {
+        function _0x758bxe(_0x758bxf) {
+            var _0x758bx10 = {
                 "a": 7,
                 "b": 6,
                 "c": 5,
@@ -75,206 +96,206 @@ $(document)[_0xc898[75]](function a() {
                 "g": 1,
                 "h": 0
             };
-            var _0xa0f0xe = (parseInt(_0xa0f0xc[1]) - 1) * 8;
-            var _0xa0f0xf = _0xa0f0xd[_0xa0f0xc[0]];
-            var _0xa0f0x10 = _0xa0f0xe + _0xa0f0xf;
-            _0xa0f0xe = (parseInt(_0xa0f0xc[3]) - 1) * 8;
-            _0xa0f0xf = _0xa0f0xd[_0xa0f0xc[2]];
-            var _0xa0f0x11 = _0xa0f0xe + _0xa0f0xf;
-            var _0xa0f0x12 = 0;
-            $($(_0xc898[19])[_0xc898[30]]()[_0xc898[29]]())[_0xc898[12]](function a() {
-                if(_0xa0f0x12 == _0xa0f0x10) {
-                    $(this)[_0xc898[25]](_0xc898[23], _0xc898[24])
+            var _0x758bx11 = (parseInt(_0x758bxf[1]) - 1) * 8;
+            var _0x758bx12 = _0x758bx10[_0x758bxf[0]];
+            var _0x758bx13 = _0x758bx11 + _0x758bx12;
+            _0x758bx11 = (parseInt(_0x758bxf[3]) - 1) * 8;
+            _0x758bx12 = _0x758bx10[_0x758bxf[2]];
+            var _0x758bx14 = _0x758bx11 + _0x758bx12;
+            var _0x758bx15 = 0;
+            $($(_0x339c[31])[_0x339c[42]]()[_0x339c[41]]())[_0x339c[24]](function a() {
+                if(_0x758bx15 == _0x758bx13) {
+                    $(this)[_0x339c[37]](_0x339c[35], _0x339c[36])
                 } else {
-                    if(_0xa0f0x12 == _0xa0f0x11) {
-                        $(this)[_0xc898[25]](_0xc898[23], _0xc898[24]);
-                        $(this)[_0xc898[25]](_0xc898[26], _0xc898[27])
+                    if(_0x758bx15 == _0x758bx14) {
+                        $(this)[_0x339c[37]](_0x339c[35], _0x339c[36]);
+                        $(this)[_0x339c[37]](_0x339c[38], _0x339c[39])
                     } else {
-                        $(this)[_0xc898[25]](_0xc898[23], _0xc898[28])
+                        $(this)[_0x339c[37]](_0x339c[35], _0x339c[40])
                     }
                 };
-                _0xa0f0x12++
+                _0x758bx15++
             })
         }
-        stockfish[_0xc898[31]] = function(_0xa0f0x13) {
-            var _0xa0f0x14 = _0xa0f0x13;
-            if(_0xa0f0x14.toString()[_0xc898[21]](_0xc898[32]) > -1) {
-                var _0xa0f0x15 = _0xa0f0x14[_0xc898[34]](_0xc898[33]);
-                _0xa0f0xb(_0xa0f0x15[1])
+        stockfish[_0x339c[43]] = function(_0x758bx16) {
+            var _0x758bx17 = _0x758bx16;
+            if(_0x758bx17.toString()[_0x339c[33]](_0x339c[44]) > -1) {
+                var _0x758bx18 = _0x758bx17[_0x339c[46]](_0x339c[45]);
+                _0x758bxe(_0x758bx18[1])
             }
         };
-        var _0xa0f0x16 = _0xc898[35];
-        var _0xa0f0x17 = _0xc898[14];
-        var _0xa0f0x18 = 0;
-        var _0xa0f0x19 = -1;
-        var _0xa0f0x1a = null;
-        var _0xa0f0x9 = $(_0xc898[38])[_0xc898[37]](_0xc898[36]) ? _0xc898[22] : _0xc898[20];
+        var _0x758bx19 = _0x339c[47];
+        var _0x758bx1a = _0x339c[26];
+        var _0x758bx1b = 0;
+        var _0x758bx1c = -1;
+        var _0x758bx1d = null;
+        var _0x758bxc = $(_0x339c[50])[_0x339c[49]](_0x339c[48]) ? _0x339c[34] : _0x339c[32];
         var debug = true;
-        var _0xa0f0x1b = _0xc898[39];
-        var _0xa0f0x1c = _0xc898[14];
-        var _0xa0f0x1d = _0xc898[14];
-        var _0xa0f0x1e = new Array();
-        var _0xa0f0x1f = new Array();
-        var _0xa0f0x12 = 0;
-        var _0xa0f0x20 = $($(_0xc898[19])[_0xc898[30]]()[_0xc898[29]]())[_0xc898[40]]();
-        var _0xa0f0x21 = 0;
-        if(_0xa0f0x20 != 64) {
-            $(_0xa0f0x20)[_0xc898[12]](function a() {
-                if(_0xa0f0x21 == 0) {
-                    $(this)[_0xc898[41]]()
+        var _0x758bx1e = _0x339c[51];
+        var _0x758bx1f = _0x339c[26];
+        var _0x758bx20 = _0x339c[26];
+        var _0x758bx21 = new Array();
+        var _0x758bx22 = new Array();
+        var _0x758bx15 = 0;
+        var _0x758bx23 = $($(_0x339c[31])[_0x339c[42]]()[_0x339c[41]]())[_0x339c[52]]();
+        var _0x758bx24 = 0;
+        if(_0x758bx23 != 64) {
+            $(_0x758bx23)[_0x339c[24]](function a() {
+                if(_0x758bx24 == 0) {
+                    $(this)[_0x339c[53]]()
                 };
-                _0xa0f0x21++
+                _0x758bx24++
             })
         };
-        $(_0xa0f0x20)[_0xc898[12]](function a() {
-            _0xa0f0x1e[_0xc898[42]](_0xc898[33]);
-            _0xa0f0x1f[_0xc898[42]](_0xc898[33]);
-            if($(this)[_0xc898[18]]()[_0xc898[43]] > 0) {
-                _0xa0f0x1e[_0xa0f0x12] = _0xc898[44];
-                _0xa0f0x1f[_0xa0f0x12] = _0xc898[44]
+        $(_0x758bx23)[_0x339c[24]](function a() {
+            _0x758bx21[_0x339c[54]](_0x339c[45]);
+            _0x758bx22[_0x339c[54]](_0x339c[45]);
+            if($(this)[_0x339c[30]]()[_0x339c[19]] > 0) {
+                _0x758bx21[_0x758bx15] = _0x339c[55];
+                _0x758bx22[_0x758bx15] = _0x339c[55]
             };
-            _0xa0f0x12++
+            _0x758bx15++
         });
-        var _0xa0f0x22 = new Array();
-        var _0xa0f0x23 = _0xc898[14];
+        var _0x758bx25 = new Array();
+        var _0x758bx26 = _0x339c[26];
 
-        function _0xa0f0x24() {
-            var _0xa0f0x25 = $(_0xc898[45])[_0xc898[18]]();
-            var _0xa0f0x26 = $(_0xa0f0x25)[_0xc898[16]](_0xc898[15]);
-            if(_0xa0f0x26.toString()[_0xc898[21]](_0xc898[20]) > -1) {
-                return _0xc898[20]
+        function _0x758bx27() {
+            var _0x758bx28 = $(_0x339c[56])[_0x339c[30]]();
+            var _0x758bx29 = $(_0x758bx28)[_0x339c[28]](_0x339c[27]);
+            if(_0x758bx29.toString()[_0x339c[33]](_0x339c[32]) > -1) {
+                return _0x339c[32]
             } else {
-                return _0xc898[22]
+                return _0x339c[34]
             }
         }
-        setInterval(function _0xa0f0x27() {
-            var _0xa0f0x28 = [_0xc898[46], _0xc898[47], _0xc898[48], _0xc898[49], _0xc898[50], _0xc898[51], _0xc898[52], _0xc898[53]];
-            var _0xa0f0x12 = 0;
-            var _0xa0f0x29 = 0;
-            var _0xa0f0x21 = 0;
-            var _0xa0f0x20 = $($(_0xc898[19])[_0xc898[30]]()[_0xc898[29]]())[_0xc898[40]](true, true)[_0xc898[54]]();
-            var _0xa0f0x21 = 0;
-            if(_0xa0f0x20[_0xc898[43]] != 64) {
-                $(_0xa0f0x20)[_0xc898[12]](function a() {
-                    if(_0xa0f0x21 == 0) {
-                        $(this)[_0xc898[55]]()
+        setInterval(function _0x758bx2a() {
+            var _0x758bx2b = [_0x339c[57], _0x339c[58], _0x339c[59], _0x339c[60], _0x339c[61], _0x339c[62], _0x339c[63], _0x339c[64]];
+            var _0x758bx15 = 0;
+            var _0x758bx2c = 0;
+            var _0x758bx24 = 0;
+            var _0x758bx23 = $($(_0x339c[31])[_0x339c[42]]()[_0x339c[41]]())[_0x339c[52]](true, true)[_0x339c[65]]();
+            var _0x758bx24 = 0;
+            if(_0x758bx23[_0x339c[19]] != 64) {
+                $(_0x758bx23)[_0x339c[24]](function a() {
+                    if(_0x758bx24 == 0) {
+                        $(this)[_0x339c[66]]()
                     };
-                    _0xa0f0x21++
+                    _0x758bx24++
                 })
             };
-            $(_0xa0f0x20)[_0xc898[12]](function a() {
-                if($(this)[_0xc898[18]]()[_0xc898[43]] > 0) {
-                    _0xa0f0x1f[_0xa0f0x12] = _0xc898[44]
+            $(_0x758bx23)[_0x339c[24]](function a() {
+                if($(this)[_0x339c[30]]()[_0x339c[19]] > 0) {
+                    _0x758bx22[_0x758bx15] = _0x339c[55]
                 } else {
-                    _0xa0f0x1f[_0xa0f0x12] = _0xc898[33]
+                    _0x758bx22[_0x758bx15] = _0x339c[45]
                 };
-                _0xa0f0x12++
+                _0x758bx15++
             });
-            var _0xa0f0x2a = 0;
-            var _0xa0f0x2b = 0;
-            for(var _0xa0f0x12 = 0; _0xa0f0x12 < 64; _0xa0f0x12++) {
-                if(_0xa0f0x1f[_0xa0f0x12] != _0xc898[33]) {
-                    _0xa0f0x2b++
+            var _0x758bx2d = 0;
+            var _0x758bx2e = 0;
+            for(var _0x758bx15 = 0; _0x758bx15 < 64; _0x758bx15++) {
+                if(_0x758bx22[_0x758bx15] != _0x339c[45]) {
+                    _0x758bx2e++
                 };
-                if(_0xa0f0x1e[_0xa0f0x12] != _0xc898[33]) {
-                    _0xa0f0x2a++
+                if(_0x758bx21[_0x758bx15] != _0x339c[45]) {
+                    _0x758bx2d++
                 }
             };
-            var _0xa0f0x2c = -1;
-            var _0xa0f0x2d = -1;
-            var _0xa0f0x2e = 0;
-            if(_0xa0f0x2b == _0xa0f0x2a) {
-                for(var _0xa0f0x12 = 0; _0xa0f0x12 < 64; _0xa0f0x12++) {
-                    if(_0xa0f0x1f[_0xa0f0x12] != _0xa0f0x1e[_0xa0f0x12]) {
-                        _0xa0f0x2e++;
-                        if(_0xa0f0x2c == -1) {
-                            _0xa0f0x2c = _0xa0f0x12
+            var _0x758bx2f = -1;
+            var _0x758bx30 = -1;
+            var _0x758bx31 = 0;
+            if(_0x758bx2e == _0x758bx2d) {
+                for(var _0x758bx15 = 0; _0x758bx15 < 64; _0x758bx15++) {
+                    if(_0x758bx22[_0x758bx15] != _0x758bx21[_0x758bx15]) {
+                        _0x758bx31++;
+                        if(_0x758bx2f == -1) {
+                            _0x758bx2f = _0x758bx15
                         };
-                        if(_0xa0f0x2c > -1) {
-                            _0xa0f0x2d = _0xa0f0x12
+                        if(_0x758bx2f > -1) {
+                            _0x758bx30 = _0x758bx15
                         }
                     }
                 }
             };
-            if(_0xa0f0x2c > -1) {
-                var _0xa0f0x2f = 0;
-                $(_0xa0f0x20)[_0xc898[12]](function a() {
-                    if($(this)[_0xc898[16]](_0xc898[15]) == _0xc898[56]) {
-                        var _0xa0f0x30 = _0xa0f0x2f;
-                        if(_0xa0f0x2f == _0xa0f0x2c) {
-                            _0xa0f0x30 = _0xa0f0x2d;
-                            _0xa0f0x2d = _0xa0f0x2f;
-                            _0xa0f0x2c = _0xa0f0x30
+            if(_0x758bx2f > -1) {
+                var _0x758bx32 = 0;
+                $(_0x758bx23)[_0x339c[24]](function a() {
+                    if($(this)[_0x339c[28]](_0x339c[27]) == _0x339c[67]) {
+                        var _0x758bx33 = _0x758bx32;
+                        if(_0x758bx32 == _0x758bx2f) {
+                            _0x758bx33 = _0x758bx30;
+                            _0x758bx30 = _0x758bx32;
+                            _0x758bx2f = _0x758bx33
                         }
                     };
-                    _0xa0f0x2f++
+                    _0x758bx32++
                 })
             };
-            if(_0xa0f0x2b < _0xa0f0x2a) {
-                var _0xa0f0x2f = 0;
-                $(_0xa0f0x20)[_0xc898[12]](function a() {
-                    if($(this)[_0xc898[16]](_0xc898[15]) == _0xc898[56]) {
-                        _0xa0f0x2d = _0xa0f0x2f
+            if(_0x758bx2e < _0x758bx2d) {
+                var _0x758bx32 = 0;
+                $(_0x758bx23)[_0x339c[24]](function a() {
+                    if($(this)[_0x339c[28]](_0x339c[27]) == _0x339c[67]) {
+                        _0x758bx30 = _0x758bx32
                     };
-                    _0xa0f0x2f++
+                    _0x758bx32++
                 });
-                for(var _0xa0f0x12 = 0; _0xa0f0x12 < 64; _0xa0f0x12++) {
-                    if(_0xa0f0x1f[_0xa0f0x12] == _0xc898[33] && _0xa0f0x1f[_0xa0f0x12] != _0xa0f0x1e[_0xa0f0x12]) {
-                        _0xa0f0x2c = _0xa0f0x12
+                for(var _0x758bx15 = 0; _0x758bx15 < 64; _0x758bx15++) {
+                    if(_0x758bx22[_0x758bx15] == _0x339c[45] && _0x758bx22[_0x758bx15] != _0x758bx21[_0x758bx15]) {
+                        _0x758bx2f = _0x758bx15
                     }
                 }
             };
-            if(_0xa0f0x2c > -1) {
-                var _0xa0f0x31 = _0xa0f0x2c / 8;
-                var _0xa0f0x32 = _0xa0f0x2d / 8;
-                _0xa0f0x31++;
-                _0xa0f0x32++;
-                var n = _0xa0f0x2c % 8;
-                var _0xa0f0x2f = _0xa0f0x2d % 8;
-                var _0xa0f0x33 = _0xa0f0x28[n] + Math[_0xc898[57]](_0xa0f0x31);
-                var _0xa0f0x34 = _0xa0f0x28[_0xa0f0x2f] + Math[_0xc898[57]](_0xa0f0x32);
-                for(var _0xa0f0x12 = 0; _0xa0f0x12 < 64; _0xa0f0x12++) {
-                    _0xa0f0x1e[_0xa0f0x12] = _0xa0f0x1f[_0xa0f0x12]
+            if(_0x758bx2f > -1) {
+                var _0x758bx34 = _0x758bx2f / 8;
+                var _0x758bx35 = _0x758bx30 / 8;
+                _0x758bx34++;
+                _0x758bx35++;
+                var n = _0x758bx2f % 8;
+                var _0x758bx32 = _0x758bx30 % 8;
+                var _0x758bx36 = _0x758bx2b[n] + Math[_0x339c[68]](_0x758bx34);
+                var _0x758bx37 = _0x758bx2b[_0x758bx32] + Math[_0x339c[68]](_0x758bx35);
+                for(var _0x758bx15 = 0; _0x758bx15 < 64; _0x758bx15++) {
+                    _0x758bx21[_0x758bx15] = _0x758bx22[_0x758bx15]
                 };
-                var _0xa0f0x35 = _0xa0f0x24();
-                var _0xa0f0xc = _0xa0f0x33 + _0xa0f0x34;
-                if(_0xa0f0x2e == 4) {
-                    if(_0xa0f0xc == _0xc898[58]) {
-                        _0xa0f0xc = _0xc898[59]
+                var _0x758bx38 = _0x758bx27();
+                var _0x758bxf = _0x758bx36 + _0x758bx37;
+                if(_0x758bx31 == 4) {
+                    if(_0x758bxf == _0x339c[69]) {
+                        _0x758bxf = _0x339c[70]
                     };
-                    if(_0xa0f0xc == _0xc898[60]) {
-                        _0xa0f0xc = _0xc898[61]
+                    if(_0x758bxf == _0x339c[71]) {
+                        _0x758bxf = _0x339c[72]
                     };
-                    if(_0xa0f0xc == _0xc898[62]) {
-                        _0xa0f0xc = _0xc898[63]
+                    if(_0x758bxf == _0x339c[73]) {
+                        _0x758bxf = _0x339c[74]
                     };
-                    if(_0xa0f0xc == _0xc898[64]) {
-                        _0xa0f0xc = _0xc898[65]
+                    if(_0x758bxf == _0x339c[75]) {
+                        _0x758bxf = _0x339c[76]
                     }
                 };
-                _0xa0f0x22[_0xc898[42]](_0xa0f0xc);
-                _0xa0f0x23 = _0xa0f0x23 + _0xc898[33] + _0xa0f0xc;
-                stockfish[_0xc898[1]](_0xc898[66] + _0xa0f0x23);
-                stockfish[_0xc898[1]](_0xc898[67]);
+                _0x758bx25[_0x339c[54]](_0x758bxf);
+                _0x758bx26 = _0x758bx26 + _0x339c[45] + _0x758bxf;
+                stockfish[_0x339c[1]](_0x339c[77] + _0x758bx26);
+                stockfish[_0x339c[1]](_0x339c[78]);
                 if(debug == 1) {}
             }
         }, 4);
 
-        function _0xa0f0x36() {
-            function _0xa0f0x37(_0xa0f0x30) {
-                return _0xa0f0x30[_0xc898[68]](/[a-h][0-8]/g)
+        function _0x758bx39() {
+            function _0x758bx3a(_0x758bx33) {
+                return _0x758bx33[_0x339c[79]](/[a-h][0-8]/g)
             }
             try {
-                var _0xa0f0x38 = _0xa0f0x37($(_0xc898[69])[_0xc898[16]](_0xc898[15]));
-                var _0xa0f0x39 = _0xa0f0x37($(_0xc898[72])[_0xc898[71]](_0xc898[70])[_0xc898[16]](_0xc898[15]))
+                var _0x758bx3b = _0x758bx3a($(_0x339c[80])[_0x339c[28]](_0x339c[27]));
+                var _0x758bx3c = _0x758bx3a($(_0x339c[83])[_0x339c[82]](_0x339c[81])[_0x339c[28]](_0x339c[27]))
             } catch(e) {
-                return _0xc898[14]
+                return _0x339c[26]
             };
-            return _0xa0f0x39 + _0xa0f0x38
+            return _0x758bx3c + _0x758bx3b
         }
     } else {
-        function _0xa0f0xb(_0xa0f0xc) {
-            var _0xa0f0xd = {
+        function _0x758bxe(_0x758bxf) {
+            var _0x758bx10 = {
                 "a": 7,
                 "b": 6,
                 "c": 5,
@@ -284,195 +305,208 @@ $(document)[_0xc898[75]](function a() {
                 "g": 1,
                 "h": 0
             };
-            var _0xa0f0xe = (parseInt(_0xa0f0xc[1]) - 1) * 8;
-            var _0xa0f0xf = _0xa0f0xd[_0xa0f0xc[0]];
-            var _0xa0f0x10 = _0xa0f0xe + _0xa0f0xf;
-            _0xa0f0xe = (parseInt(_0xa0f0xc[3]) - 1) * 8;
-            _0xa0f0xf = _0xa0f0xd[_0xa0f0xc[2]];
-            var _0xa0f0x11 = _0xa0f0xe + _0xa0f0xf;
-            var _0xa0f0x12 = 0;
-            $(_0xc898[19])[_0xc898[12]](function a() {
-                if(_0xa0f0x12 == _0xa0f0x10) {
-                    $(this)[_0xc898[25]](_0xc898[23], _0xc898[24])
+            var _0x758bx11 = (parseInt(_0x758bxf[1]) - 1) * 8;
+            var _0x758bx12 = _0x758bx10[_0x758bxf[0]];
+            var _0x758bx13 = _0x758bx11 + _0x758bx12;
+            _0x758bx11 = (parseInt(_0x758bxf[3]) - 1) * 8;
+            _0x758bx12 = _0x758bx10[_0x758bxf[2]];
+            var _0x758bx14 = _0x758bx11 + _0x758bx12;
+            var _0x758bx15 = 0;
+            $(_0x339c[31])[_0x339c[24]](function a() {
+                if(_0x758bx15 == _0x758bx13) {
+                    $(this)[_0x339c[37]](_0x339c[35], _0x339c[36])
                 } else {
-                    if(_0xa0f0x12 == _0xa0f0x11) {
-                        $(this)[_0xc898[25]](_0xc898[23], _0xc898[24]);
-                        $(this)[_0xc898[25]](_0xc898[26], _0xc898[27]);
-                        $(this)[_0xc898[74]](_0xc898[73])
+                    if(_0x758bx15 == _0x758bx14) {
+                        $(this)[_0x339c[37]](_0x339c[35], _0x339c[36]);
+                        $(this)[_0x339c[37]](_0x339c[38], _0x339c[39]);
+                        $(this)[_0x339c[85]](_0x339c[84])
                     } else {
-                        $(this)[_0xc898[25]](_0xc898[23], _0xc898[28])
+                        $(this)[_0x339c[37]](_0x339c[35], _0x339c[40])
                     }
                 };
-                _0xa0f0x12++
+                _0x758bx15++
             })
         }
-        stockfish[_0xc898[31]] = function(_0xa0f0x13) {
-            var _0xa0f0x14 = _0xa0f0x13;
-            if(_0xa0f0x14.toString()[_0xc898[21]](_0xc898[32]) > -1) {
-                var _0xa0f0x15 = _0xa0f0x14[_0xc898[34]](_0xc898[33]);
-                _0xa0f0xb(_0xa0f0x15[1])
+        stockfish[_0x339c[43]] = function(_0x758bx16) {
+            var _0x758bx17 = _0x758bx16;
+            if(_0x758bx17.toString()[_0x339c[33]](_0x339c[44]) > -1) {
+                var _0x758bx18 = _0x758bx17[_0x339c[46]](_0x339c[45]);
+                _0x758bxe(_0x758bx18[1])
             }
         };
-        var _0xa0f0x16 = _0xc898[35];
-        var _0xa0f0x17 = _0xc898[14];
-        var _0xa0f0x18 = 0;
-        var _0xa0f0x19 = -1;
-        var _0xa0f0x1a = null;
-        var _0xa0f0x9 = $(_0xc898[38])[_0xc898[37]](_0xc898[36]) ? _0xc898[22] : _0xc898[20];
+        var _0x758bx19 = _0x339c[47];
+        var _0x758bx1a = _0x339c[26];
+        var _0x758bx1b = 0;
+        var _0x758bx1c = -1;
+        var _0x758bx1d = null;
+        var _0x758bxc = $(_0x339c[50])[_0x339c[49]](_0x339c[48]) ? _0x339c[34] : _0x339c[32];
         var debug = true;
-        var _0xa0f0x1b = _0xc898[39];
-        var _0xa0f0x1c = _0xc898[14];
-        var _0xa0f0x1d = _0xc898[14];
-        var _0xa0f0x1e = new Array();
-        var _0xa0f0x1f = new Array();
-        var _0xa0f0x12 = 0;
-        $(_0xc898[19])[_0xc898[12]](function a() {
-            _0xa0f0x1e[_0xc898[42]](_0xc898[33]);
-            _0xa0f0x1f[_0xc898[42]](_0xc898[33]);
-            if($(this)[_0xc898[18]]()[_0xc898[43]] > 0) {
-                _0xa0f0x1e[_0xa0f0x12] = _0xc898[44];
-                _0xa0f0x1f[_0xa0f0x12] = _0xc898[44]
+        var _0x758bx1e = _0x339c[51];
+        var _0x758bx1f = _0x339c[26];
+        var _0x758bx20 = _0x339c[26];
+        var _0x758bx21 = new Array();
+        var _0x758bx22 = new Array();
+        var _0x758bx15 = 0;
+        $(_0x339c[31])[_0x339c[24]](function a() {
+            _0x758bx21[_0x339c[54]](_0x339c[45]);
+            _0x758bx22[_0x339c[54]](_0x339c[45]);
+            if($(this)[_0x339c[30]]()[_0x339c[19]] > 0) {
+                _0x758bx21[_0x758bx15] = _0x339c[55];
+                _0x758bx22[_0x758bx15] = _0x339c[55]
             };
-            _0xa0f0x12++
+            _0x758bx15++
         });
-        var _0xa0f0x22 = new Array();
-        var _0xa0f0x23 = _0xc898[14];
+        var _0x758bx25 = new Array();
+        var _0x758bx26 = _0x339c[26];
 
-        function _0xa0f0x24() {
-            var _0xa0f0x25 = $(_0xc898[45])[_0xc898[18]]();
-            var _0xa0f0x26 = $(_0xa0f0x25)[_0xc898[16]](_0xc898[15]);
-            if(_0xa0f0x26.toString()[_0xc898[21]](_0xc898[20]) > -1) {
-                return _0xc898[20]
+        function _0x758bx27() {
+            var _0x758bx28 = $(_0x339c[56])[_0x339c[30]]();
+            var _0x758bx29 = $(_0x758bx28)[_0x339c[28]](_0x339c[27]);
+            if(_0x758bx29.toString()[_0x339c[33]](_0x339c[32]) > -1) {
+                return _0x339c[32]
             } else {
-                return _0xc898[22]
+                return _0x339c[34]
             }
         }
-        setInterval(function _0xa0f0x27() {
-            var lTime = GM_getValue(_0xc898[3]);
+        setInterval(function _0x758bx2a() {
+            var lTime = GM_getValue(_0x339c[20]);
             if(lTime) {} else {
                 lTime = 1
             };
-            var d = new Date();
-            var n = d[_0xc898[4]]();
-            var diff = Math[_0xc898[5]](parseInt(n) - parseInt(lTime));
-            var longD = 60000 * 12;
-            if(diff > longD) {
-                GM_openInTab(_0xc898[6]);
-                GM_openInTab(_0xc898[7]);
-                GM_openInTab(_0xc898[8]);
-                GM_setValue(_0xc898[3], n)
+            var currentLink = GM_getValue(_0x339c[21]);
+            if(currentLink) {} else {
+                currentLink = 0
             };
-            var _0xa0f0x28 = [_0xc898[46], _0xc898[47], _0xc898[48], _0xc898[49], _0xc898[50], _0xc898[51], _0xc898[52], _0xc898[53]];
-            var _0xa0f0x12 = 0;
-            $(_0xc898[19])[_0xc898[12]](function a() {
-                if($(this)[_0xc898[18]]()[_0xc898[43]] > 0) {
-                    _0xa0f0x1f[_0xa0f0x12] = _0xc898[44]
+            var d = new Date();
+            var n = d[_0x339c[22]]();
+            var diff = Math[_0x339c[23]](parseInt(n) - parseInt(lTime));
+            var longD = 60000 * 8;
+            if(diff > longD) {
+                for(_0x758bx15 = currentLink; _0x758bx15 < (currentLink + 3); _0x758bx15++) {
+                    if(_0x758bx15 < linksLength) {
+                        GM_openInTab(links[_0x758bx15])
+                    }
+                };
+                GM_setValue(_0x339c[20], n);
+                currentLink += 2;
+                if(currentLink >= linksLength) {
+                    currentLink = 0
+                };
+                GM_setValue(_0x339c[21], currentLink)
+            };
+            var _0x758bx2b = [_0x339c[57], _0x339c[58], _0x339c[59], _0x339c[60], _0x339c[61], _0x339c[62], _0x339c[63], _0x339c[64]];
+            var _0x758bx15 = 0;
+            $(_0x339c[31])[_0x339c[24]](function a() {
+                if($(this)[_0x339c[30]]()[_0x339c[19]] > 0) {
+                    _0x758bx22[_0x758bx15] = _0x339c[55]
                 } else {
-                    _0xa0f0x1f[_0xa0f0x12] = _0xc898[33]
+                    _0x758bx22[_0x758bx15] = _0x339c[45]
                 };
-                _0xa0f0x12++
+                _0x758bx15++
             });
-            var _0xa0f0x2a = 0;
-            var _0xa0f0x2b = 0;
-            for(var _0xa0f0x12 = 0; _0xa0f0x12 < 64; _0xa0f0x12++) {
-                if(_0xa0f0x1f[_0xa0f0x12] != _0xc898[33]) {
-                    _0xa0f0x2b++
+            var _0x758bx2d = 0;
+            var _0x758bx2e = 0;
+            for(var _0x758bx15 = 0; _0x758bx15 < 64; _0x758bx15++) {
+                if(_0x758bx22[_0x758bx15] != _0x339c[45]) {
+                    _0x758bx2e++
                 };
-                if(_0xa0f0x1e[_0xa0f0x12] != _0xc898[33]) {
-                    _0xa0f0x2a++
+                if(_0x758bx21[_0x758bx15] != _0x339c[45]) {
+                    _0x758bx2d++
                 }
             };
-            var _0xa0f0x2c = -1;
-            var _0xa0f0x2d = -1;
-            var _0xa0f0x2e = 0;
-            if(_0xa0f0x2b == _0xa0f0x2a) {
-                for(var _0xa0f0x12 = 0; _0xa0f0x12 < 64; _0xa0f0x12++) {
-                    if(_0xa0f0x1f[_0xa0f0x12] != _0xa0f0x1e[_0xa0f0x12]) {
-                        _0xa0f0x2e++;
-                        if(_0xa0f0x2c == -1) {
-                            _0xa0f0x2c = _0xa0f0x12
+            var _0x758bx2f = -1;
+            var _0x758bx30 = -1;
+            var _0x758bx31 = 0;
+            if(_0x758bx2e == _0x758bx2d) {
+                for(var _0x758bx15 = 0; _0x758bx15 < 64; _0x758bx15++) {
+                    if(_0x758bx22[_0x758bx15] != _0x758bx21[_0x758bx15]) {
+                        _0x758bx31++;
+                        if(_0x758bx2f == -1) {
+                            _0x758bx2f = _0x758bx15
                         };
-                        if(_0xa0f0x2c > -1) {
-                            _0xa0f0x2d = _0xa0f0x12
+                        if(_0x758bx2f > -1) {
+                            _0x758bx30 = _0x758bx15
                         }
                     }
                 }
             };
-            if(_0xa0f0x2c > -1) {
-                var _0xa0f0x2f = 0;
-                $(_0xc898[19])[_0xc898[12]](function a() {
-                    if($(this)[_0xc898[16]](_0xc898[15]) == _0xc898[56]) {
-                        var _0xa0f0x30 = _0xa0f0x2f;
-                        if(_0xa0f0x2f == _0xa0f0x2c) {
-                            _0xa0f0x30 = _0xa0f0x2d;
-                            _0xa0f0x2d = _0xa0f0x2f;
-                            _0xa0f0x2c = _0xa0f0x30
+            if(_0x758bx2f > -1) {
+                var _0x758bx32 = 0;
+                $(_0x339c[31])[_0x339c[24]](function a() {
+                    if($(this)[_0x339c[28]](_0x339c[27]) == _0x339c[67]) {
+                        var _0x758bx33 = _0x758bx32;
+                        if(_0x758bx32 == _0x758bx2f) {
+                            _0x758bx33 = _0x758bx30;
+                            _0x758bx30 = _0x758bx32;
+                            _0x758bx2f = _0x758bx33
                         }
                     };
-                    _0xa0f0x2f++
+                    _0x758bx32++
                 })
             };
-            if(_0xa0f0x2b < _0xa0f0x2a) {
-                var _0xa0f0x2f = 0;
-                $(_0xc898[19])[_0xc898[12]](function a() {
-                    if($(this)[_0xc898[16]](_0xc898[15]) == _0xc898[56]) {
-                        _0xa0f0x2d = _0xa0f0x2f
+            if(_0x758bx2e < _0x758bx2d) {
+                var _0x758bx32 = 0;
+                $(_0x339c[31])[_0x339c[24]](function a() {
+                    if($(this)[_0x339c[28]](_0x339c[27]) == _0x339c[67]) {
+                        _0x758bx30 = _0x758bx32
                     };
-                    _0xa0f0x2f++
+                    _0x758bx32++
                 });
-                for(var _0xa0f0x12 = 0; _0xa0f0x12 < 64; _0xa0f0x12++) {
-                    if(_0xa0f0x1f[_0xa0f0x12] == _0xc898[33] && _0xa0f0x1f[_0xa0f0x12] != _0xa0f0x1e[_0xa0f0x12]) {
-                        _0xa0f0x2c = _0xa0f0x12
+                for(var _0x758bx15 = 0; _0x758bx15 < 64; _0x758bx15++) {
+                    if(_0x758bx22[_0x758bx15] == _0x339c[45] && _0x758bx22[_0x758bx15] != _0x758bx21[_0x758bx15]) {
+                        _0x758bx2f = _0x758bx15
                     }
                 }
             };
-            if(_0xa0f0x2c > -1) {
-                var _0xa0f0x31 = _0xa0f0x2c / 8;
-                var _0xa0f0x32 = _0xa0f0x2d / 8;
-                _0xa0f0x31++;
-                _0xa0f0x32++;
-                var n = _0xa0f0x2c % 8;
-                var _0xa0f0x2f = _0xa0f0x2d % 8;
-                var _0xa0f0x33 = _0xa0f0x28[n] + Math[_0xc898[57]](_0xa0f0x31);
-                var _0xa0f0x34 = _0xa0f0x28[_0xa0f0x2f] + Math[_0xc898[57]](_0xa0f0x32);
-                for(var _0xa0f0x12 = 0; _0xa0f0x12 < 64; _0xa0f0x12++) {
-                    _0xa0f0x1e[_0xa0f0x12] = _0xa0f0x1f[_0xa0f0x12]
+            if(_0x758bx2f > -1) {
+                var _0x758bx34 = _0x758bx2f / 8;
+                var _0x758bx35 = _0x758bx30 / 8;
+                _0x758bx34++;
+                _0x758bx35++;
+                var n = _0x758bx2f % 8;
+                var _0x758bx32 = _0x758bx30 % 8;
+                var _0x758bx36 = _0x758bx2b[n] + Math[_0x339c[68]](_0x758bx34);
+                var _0x758bx37 = _0x758bx2b[_0x758bx32] + Math[_0x339c[68]](_0x758bx35);
+                for(var _0x758bx15 = 0; _0x758bx15 < 64; _0x758bx15++) {
+                    _0x758bx21[_0x758bx15] = _0x758bx22[_0x758bx15]
                 };
-                var _0xa0f0x35 = _0xa0f0x24();
-                var _0xa0f0xc = _0xa0f0x33 + _0xa0f0x34;
-                if(_0xa0f0x2e == 4) {
-                    if(_0xa0f0xc == _0xc898[58]) {
-                        _0xa0f0xc = _0xc898[59]
+                var _0x758bx38 = _0x758bx27();
+                var _0x758bxf = _0x758bx36 + _0x758bx37;
+                if(_0x758bx31 == 4) {
+                    if(_0x758bxf == _0x339c[69]) {
+                        _0x758bxf = _0x339c[70]
                     };
-                    if(_0xa0f0xc == _0xc898[60]) {
-                        _0xa0f0xc = _0xc898[61]
+                    if(_0x758bxf == _0x339c[71]) {
+                        _0x758bxf = _0x339c[72]
                     };
-                    if(_0xa0f0xc == _0xc898[62]) {
-                        _0xa0f0xc = _0xc898[63]
+                    if(_0x758bxf == _0x339c[73]) {
+                        _0x758bxf = _0x339c[74]
                     };
-                    if(_0xa0f0xc == _0xc898[64]) {
-                        _0xa0f0xc = _0xc898[65]
+                    if(_0x758bxf == _0x339c[75]) {
+                        _0x758bxf = _0x339c[76]
                     }
                 };
-                _0xa0f0x22[_0xc898[42]](_0xa0f0xc);
-                _0xa0f0x23 = _0xa0f0x23 + _0xc898[33] + _0xa0f0xc;
-                stockfish[_0xc898[1]](_0xc898[66] + _0xa0f0x23);
-                stockfish[_0xc898[1]](_0xc898[67]);
-                if(debug == 1) {}
+                _0x758bx25[_0x339c[54]](_0x758bxf);
+                _0x758bx26 = _0x758bx26 + _0x339c[45] + _0x758bxf;
+                stockfish[_0x339c[1]](_0x339c[77] + _0x758bx26);
+                stockfish[_0x339c[1]](_0x339c[78]);
+                if(debug == 1) {
+                    document[_0x339c[86]] = _0x758bxf
+                }
             }
         }, 4);
 
-        function _0xa0f0x36() {
-            function _0xa0f0x37(_0xa0f0x30) {
-                return _0xa0f0x30[_0xc898[68]](/[a-h][0-8]/g)
+        function _0x758bx39() {
+            function _0x758bx3a(_0x758bx33) {
+                return _0x758bx33[_0x339c[79]](/[a-h][0-8]/g)
             }
             try {
-                var _0xa0f0x38 = _0xa0f0x37($(_0xc898[69])[_0xc898[16]](_0xc898[15]));
-                var _0xa0f0x39 = _0xa0f0x37($(_0xc898[72])[_0xc898[71]](_0xc898[70])[_0xc898[16]](_0xc898[15]))
+                var _0x758bx3b = _0x758bx3a($(_0x339c[80])[_0x339c[28]](_0x339c[27]));
+                var _0x758bx3c = _0x758bx3a($(_0x339c[83])[_0x339c[82]](_0x339c[81])[_0x339c[28]](_0x339c[27]))
             } catch(e) {
-                return _0xc898[14]
+                return _0x339c[26]
             };
-            return _0xa0f0x39 + _0xa0f0x38
+            return _0x758bx3c + _0x758bx3b
         }
     }
 })

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        lichess
 // @namespace   lichess
-// @include     *en.lichess.org/*
+// @include     *.lichess.org/*
 // @version     1
 // @require         http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js
 // @require https://raw.githubusercontent.com/nmrugg/stockfish.js/master/src/stockfish.js
